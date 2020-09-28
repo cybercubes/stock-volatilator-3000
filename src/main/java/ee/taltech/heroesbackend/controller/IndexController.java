@@ -11,8 +11,4 @@ public class IndexController {
         return "API is up";
     }
 
-    @GetMapping("spring-boot")
-    public String springBoot(){
-        return "Hello from Spring Boot Hello from Spring Boot Hello from Spring Boot Hello from Spring Boot";
-    }
 }
