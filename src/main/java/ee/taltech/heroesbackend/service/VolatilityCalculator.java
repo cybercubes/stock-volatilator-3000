@@ -73,15 +73,13 @@ public class VolatilityCalculator {
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .divide(BigDecimal.valueOf(records.size()), RoundingMode.HALF_EVEN);
 
-        BigDecimal volatility = records.stream()
+        return records.stream()
                 .map(x -> x.subtract(average).pow(2))
                 .collect(Collectors.toList())
                 .stream()
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .divide(average, RoundingMode.HALF_UP)
                 .sqrt(new MathContext(4));
-
-        return volatility;
     }
 
     /*private Optional<Map.Entry<LocalDate, DataPoint>> getLastEntry(Map<LocalDate, DataPoint> data) {
