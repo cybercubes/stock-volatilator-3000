@@ -5,15 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FinanceService {
+public class VolatilityService {
 
     @Autowired
     private AlphaVantage alphaVantage;
     @Autowired
-    private FinanceCalculator financeCalculator;
+    private VolatilityCalculator volatilityCalculator;
 
-    public FinanceResponse queryForData(String symbol) {
+    public VolatilityResponse queryForData(String symbol) {
         DailyResponse dailyResponse = alphaVantage.queryForDaily(symbol);
-        return financeCalculator.transformResponse(dailyResponse);
+        return volatilityCalculator.transformResponse(dailyResponse);
     }
 }
