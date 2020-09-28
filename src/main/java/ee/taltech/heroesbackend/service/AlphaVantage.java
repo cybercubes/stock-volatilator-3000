@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class AlphaVantage {
 
-    public static final String DAILY = "TIME_SERIES_DAILY";
+    public static final String DAILY = "TIME_SERIES_DAILY_ADJUSTED";
     @Autowired
     private AlphaVantageConfig config;
     @Autowired
