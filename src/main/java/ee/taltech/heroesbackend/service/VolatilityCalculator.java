@@ -75,8 +75,6 @@ public class VolatilityCalculator {
 
         return records.stream()
                 .map(x -> x.subtract(average).pow(2))
-                .collect(Collectors.toList())
-                .stream()
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .divide(average, RoundingMode.HALF_UP)
                 .sqrt(new MathContext(4));
