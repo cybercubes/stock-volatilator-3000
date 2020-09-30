@@ -1,8 +1,8 @@
-package ee.taltech.heroesbackend.service.alpha;
+package ee.taltech.volatilator.service.alpha;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import ee.taltech.heroesbackend.configuration.LocalDateTimeKeyDeserializer;
+import ee.taltech.volatilator.configuration.LocalDateTimeKeyDeserializer;
 import lombok.Data;
 
 import java.time.LocalDateTime;

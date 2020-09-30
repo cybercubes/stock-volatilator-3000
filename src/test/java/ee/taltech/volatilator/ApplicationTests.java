@@ -1,4 +1,4 @@
-package ee.taltech.heroesbackend;
+package ee.taltech.volatilator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

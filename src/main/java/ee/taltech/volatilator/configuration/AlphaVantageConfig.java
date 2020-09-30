@@ -1,4 +1,4 @@
-package ee.taltech.heroesbackend.configuration;
+package ee.taltech.volatilator.configuration;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

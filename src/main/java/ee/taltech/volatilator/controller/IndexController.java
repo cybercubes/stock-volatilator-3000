@@ -1,4 +1,4 @@
-package ee.taltech.heroesbackend.controller;
+package ee.taltech.volatilator.controller;
 
 import org.springframework.web.bind.annotation.*;
 

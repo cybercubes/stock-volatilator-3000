@@ -1,7 +1,7 @@
-package ee.taltech.heroesbackend.service;
+package ee.taltech.volatilator.service;
 
-import ee.taltech.heroesbackend.configuration.AlphaVantageConfig;
-import ee.taltech.heroesbackend.service.alpha.DailyResponse;
+import ee.taltech.volatilator.configuration.AlphaVantageConfig;
+import ee.taltech.volatilator.service.alpha.DailyResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

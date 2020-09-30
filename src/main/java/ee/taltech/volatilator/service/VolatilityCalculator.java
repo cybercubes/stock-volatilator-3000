@@ -1,8 +1,9 @@
-package ee.taltech.heroesbackend.service;
+package ee.taltech.volatilator.service;
 
-import ee.taltech.heroesbackend.service.alpha.DailyResponse;
-import ee.taltech.heroesbackend.service.alpha.DataPoint;
-import ee.taltech.heroesbackend.service.alpha.Metadata;
+import ee.taltech.volatilator.service.alpha.DailyResponse;
+import ee.taltech.volatilator.service.alpha.DataPoint;
+import ee.taltech.volatilator.service.alpha.Metadata;
+import ee.taltech.volatilator.util.VolatilityUtil;
 import org.springframework.stereotype.Service;
 //Arch's imports
 import java.math.BigDecimal;
@@ -13,7 +14,6 @@ import java.util.Set;
 import java.math.MathContext;
 import java.time.LocalDate;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 public class VolatilityCalculator {
@@ -69,15 +69,7 @@ public class VolatilityCalculator {
             records.add(me.getValue().getAdjusted_close());
         }
 
-        BigDecimal average = records.stream()
-                .reduce(BigDecimal.ZERO, BigDecimal::add)
-                .divide(BigDecimal.valueOf(records.size()), RoundingMode.HALF_EVEN);
-
-        return records.stream()
-                .map(x -> x.subtract(average).pow(2))
-                .reduce(BigDecimal.ZERO, BigDecimal::add)
-                .divide(average, RoundingMode.HALF_UP)
-                .sqrt(new MathContext(4));
+        return VolatilityUtil.getDeviation(records);
     }
 
     /*private Optional<Map.Entry<LocalDate, DataPoint>> getLastEntry(Map<LocalDate, DataPoint> data) {

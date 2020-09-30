@@ -1,6 +1,6 @@
-package ee.taltech.heroesbackend.service;
+package ee.taltech.volatilator.service;
 
-import ee.taltech.heroesbackend.service.alpha.DataPoint;
+import ee.taltech.volatilator.service.alpha.DataPoint;
 import lombok.Data;
 
 import java.math.BigDecimal;

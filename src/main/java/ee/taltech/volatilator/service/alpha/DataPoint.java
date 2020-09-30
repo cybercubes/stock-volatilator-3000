@@ -1,4 +1,4 @@
-package ee.taltech.heroesbackend.service.alpha;
+package ee.taltech.volatilator.service.alpha;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
