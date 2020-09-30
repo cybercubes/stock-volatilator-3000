@@ -1,5 +1,6 @@
 package ee.taltech.volatilator.service;
 
+import ee.taltech.volatilator.dto.VolatilityResponse;
 import ee.taltech.volatilator.service.alpha.DailyResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

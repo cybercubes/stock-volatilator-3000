@@ -1,5 +1,6 @@
 package ee.taltech.volatilator.service;
 
+import ee.taltech.volatilator.dto.VolatilityResponse;
 import ee.taltech.volatilator.service.alpha.DailyResponse;
 import ee.taltech.volatilator.service.alpha.DataPoint;
 import ee.taltech.volatilator.service.alpha.Metadata;
@@ -7,11 +8,9 @@ import ee.taltech.volatilator.util.VolatilityUtil;
 import org.springframework.stereotype.Service;
 //Arch's imports
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
-import java.math.MathContext;
 import java.time.LocalDate;
 import java.util.Map;
 

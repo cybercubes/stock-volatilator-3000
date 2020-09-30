@@ -1,6 +1,6 @@
 package ee.taltech.volatilator.controller;
 
-import ee.taltech.volatilator.service.VolatilityResponse;
+import ee.taltech.volatilator.dto.VolatilityResponse;
 import ee.taltech.volatilator.service.VolatilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
