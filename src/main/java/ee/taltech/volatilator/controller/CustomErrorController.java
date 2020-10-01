@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
+import static java.util.Objects.isNull;
+
 @Controller
 public class CustomErrorController implements ErrorController {
 
@@ -20,7 +22,7 @@ public class CustomErrorController implements ErrorController {
 
         Integer statusCode = Integer.valueOf(status.toString());
 
-        if (status != null) {
+        if (!isNull(status)) {
 
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
                 return "error-404";
