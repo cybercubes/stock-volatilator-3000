@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Objects;
+
 import static java.util.Objects.isNull;
 
 @Service
@@ -22,11 +24,12 @@ public class AlphaVantage {
         String url = config.getUrl()
                 + "?function=" + DAILY
                 + "&symbol=" + symbol
+                + "&outputsize=compact"
                 + "&apikey=" + config.getKey();
         ResponseEntity<DailyResponse> entity = restTemplate.getForEntity(url, DailyResponse.class);
         //todo do some error handling in the future
 
-        if (isNull(entity.getBody().getMetadata())) {
+        if (isNull(Objects.requireNonNull(entity.getBody()).getMetadata())) {
             throw new RuntimeException("Received empty JSON response");
         }
 

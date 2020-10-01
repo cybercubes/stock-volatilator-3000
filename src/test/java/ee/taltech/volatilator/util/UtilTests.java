@@ -13,10 +13,10 @@ public class UtilTests {
     @Test
     void test(){
         List<BigDecimal> arr = new ArrayList<>();
-        arr.add(BigDecimal.ONE);
-        arr.add(BigDecimal.ONE);
-        arr.add(BigDecimal.ONE);
-        assertEquals(BigDecimal.ZERO, VolatilityUtil.getDeviation(arr));
+        arr.add(BigDecimal.valueOf(3));
+        arr.add(BigDecimal.valueOf(9));
+        arr.add(BigDecimal.valueOf(21));
+        assertEquals(BigDecimal.valueOf(7.483), VolatilityUtil.getDeviation(arr));
     }
     //todo assertions on getAverage
 }

@@ -10,13 +10,10 @@ import java.util.List;
 @Service
 public class VolatilityUtil {
     public static BigDecimal getDeviation(List<BigDecimal> records){
-
-        BigDecimal average = getAverage(records);
-
         return records.stream()
-                .map(x -> x.subtract(average).pow(2))
+                .map(x -> x.subtract(getAverage(records)).pow(2))
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
-                .divide(average, RoundingMode.HALF_UP)
+                .divide(BigDecimal.valueOf(records.size()), RoundingMode.HALF_UP)
                 .sqrt(new MathContext(4));
     }
 

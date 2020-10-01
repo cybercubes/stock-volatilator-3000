@@ -13,5 +13,4 @@ public class VolatilityResponse {
     private String symbol;
     private BigDecimal volatility;
     private Map<LocalDate, DataPoint> entries;
-    //private String error;
 }
