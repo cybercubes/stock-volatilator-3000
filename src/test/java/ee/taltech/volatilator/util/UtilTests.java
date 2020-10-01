@@ -18,5 +18,16 @@ public class UtilTests {
         arr.add(BigDecimal.valueOf(21));
         assertEquals(BigDecimal.valueOf(7.483), VolatilityUtil.getDeviation(arr));
     }
+
+    @Test
+    void nullTest(){
+        List<BigDecimal> arr = new ArrayList<>();
+        arr.add(BigDecimal.valueOf(3));
+        arr.add(BigDecimal.valueOf(9));
+        arr.add(BigDecimal.valueOf(21));
+        arr.add(null);
+        assertEquals(BigDecimal.valueOf(7.483), VolatilityUtil.getDeviation(arr));
+    }
+
     //todo assertions on getAverage
 }
