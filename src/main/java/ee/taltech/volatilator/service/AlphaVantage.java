@@ -23,6 +23,11 @@ public class AlphaVantage {
                 + "&apikey=" + config.getKey();
         ResponseEntity<DailyResponse> entity = restTemplate.getForEntity(url, DailyResponse.class);
         //todo do some error handling in the future
+
+        if (entity.getBody().getMetadata() == null) {
+            throw new RuntimeException("Received empty JSON response");
+        }
+
         return entity.getBody();
     }
 }
