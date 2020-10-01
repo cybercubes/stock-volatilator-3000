@@ -2,7 +2,3 @@ app:
   alpha-vantage:
     url: https://www.alphavantage.co/query
     key: demo
-server:
-  error:
-    whitelabel:
-      enabled: false
