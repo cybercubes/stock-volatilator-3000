@@ -45,7 +45,7 @@ public class VolatilityCalculator {
     private BigDecimal getVolatility(Map<LocalDate, DataPoint> dataPoint/*, LocalDate start, LocalDate end*/){
         // Error Checking needs to be leveled up
         if (dataPoint == null || dataPoint.isEmpty()) {
-            return BigDecimal.ZERO;
+            return null;
         }
         /*else if(start == null || end == null){
             //return BigDecimal.ZERO; Actually calculate full stuff

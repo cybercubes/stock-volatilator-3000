@@ -26,7 +26,7 @@ public class VolatilityUtil {
                 .sqrt(new MathContext(4));
     }
 
-    private static BigDecimal getAverage(List<BigDecimal> records){
+    public static BigDecimal getAverage(List<BigDecimal> records){
         records = filterNulls(records);
         return records.stream()
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
