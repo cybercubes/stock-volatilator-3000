@@ -20,7 +20,8 @@ public class VolatilityController {
                                       @RequestParam(defaultValue = "2020-09-06")String startDate,
                                       @RequestParam(defaultValue = "2020-10-03")String endDate ){
 
-        log.info("symbol = {}, startDate = {}");
+        log.info("symbol = {}, startDate = {}, endDate = {}",
+                symbol, startDate, endDate);
         return volatilityService.queryForData(symbol, LocalDate.parse(startDate), LocalDate.parse(endDate));
     }
 }
