@@ -5,6 +5,7 @@ import ee.taltech.volatilator.service.alpha.DailyResponse;
 import ee.taltech.volatilator.service.alpha.DataPoint;
 import ee.taltech.volatilator.service.alpha.Metadata;
 import ee.taltech.volatilator.util.VolatilityUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 //Arch's imports
 import java.math.BigDecimal;
@@ -43,7 +44,7 @@ public class VolatilityCalculator {
         return dataPoint;
     }
 
-    public BigDecimal getVolatility(Map<LocalDate, DataPoint> dataPoint/*, LocalDate start, LocalDate end*/){
+    public static BigDecimal getVolatility(Map<LocalDate, DataPoint> dataPoint/*, LocalDate start, LocalDate end*/){
         // Error Checking needs to be leveled up
         if (dataPoint == null || dataPoint.isEmpty()) {
             throw new EmptyStackException();

@@ -1,5 +1,6 @@
 package ee.taltech.volatilator.util;
 
+import ee.taltech.volatilator.service.VolatilityCalculator;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -26,6 +27,8 @@ public class UtilTests {
                         BigDecimal.valueOf(21),
                         null)));
     }
+
+
 
     @Test
     void averageTest(){

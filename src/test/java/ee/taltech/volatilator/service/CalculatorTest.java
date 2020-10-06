@@ -1,21 +1,18 @@
 package ee.taltech.volatilator.service;
 
-import ee.taltech.volatilator.util.VolatilityUtil;
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
+import static ee.taltech.volatilator.service.VolatilityCalculator.*;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.EmptyStackException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import ee.taltech.volatilator.service.VolatilityCalculator.*;
 
 public class CalculatorTest {
 
     @Test
     void CalculatorNullTest(){
-        Assertions.assertThrows(EmptyStackException.class, () -> );
+       assertThrows(EmptyStackException.class, () -> VolatilityCalculator.getVolatility(null));
     }
 
 }
