@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.Objects;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.EmptyStackException;
@@ -46,7 +47,7 @@ public class VolatilityCalculator {
 
     public static BigDecimal getVolatility(Map<LocalDate, DataPoint> dataPoint/*, LocalDate start, LocalDate end*/){
         // Error Checking needs to be leveled up
-        if (dataPoint == null || dataPoint.isEmpty()) {
+        if (Objects.isNull(dataPoint) || dataPoint.isEmpty()) {
             throw new EmptyStackException();
         }
         /*else if(start == null || end == null){
