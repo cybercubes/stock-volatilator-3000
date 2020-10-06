@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UtilTests {
     @Test
-    void test(){
+    void deviationTest(){
         assertEquals(BigDecimal.valueOf(7.483),
                 VolatilityUtil.getDeviation(Arrays.asList(
                         BigDecimal.valueOf(3),
@@ -18,7 +18,7 @@ public class UtilTests {
     }
 
     @Test
-    void nullTest(){
+    void deviationTestNullTest(){
         assertEquals(BigDecimal.valueOf(7.483),
                 VolatilityUtil.getDeviation(Arrays.asList(
                         BigDecimal.valueOf(3),
@@ -26,7 +26,6 @@ public class UtilTests {
                         BigDecimal.valueOf(21),
                         null)));
     }
-
 
     @Test
     void averageTest(){
