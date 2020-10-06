@@ -1,4 +1,9 @@
-package ee.taltech.volatilator.Responses;
+package ee.taltech.volatilator.responses;
 
-public class SuccessResponse {
+public class SuccessResponse<T> extends Response<T> {
+    public String status = "success";
+
+    public SuccessResponse(T body) {
+        super(body);
+    }
 }

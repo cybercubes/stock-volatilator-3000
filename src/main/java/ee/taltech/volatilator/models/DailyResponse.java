@@ -1,6 +1,8 @@
-package ee.taltech.volatilator.service.alpha;
+package ee.taltech.volatilator.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import ee.taltech.volatilator.service.alpha.DataPoint;
+import ee.taltech.volatilator.service.alpha.Metadata;
 import lombok.Data;
 
 import java.time.LocalDate;

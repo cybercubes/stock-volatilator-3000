@@ -1,15 +1,11 @@
 package ee.taltech.volatilator.service;
 
 import ee.taltech.volatilator.configuration.AlphaVantageConfig;
-import ee.taltech.volatilator.service.alpha.DailyResponse;
+import ee.taltech.volatilator.models.DailyResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Objects;
-
-import static java.util.Objects.isNull;
 
 @Service
 public class AlphaVantage {
@@ -29,9 +25,10 @@ public class AlphaVantage {
         ResponseEntity<DailyResponse> entity = restTemplate.getForEntity(url, DailyResponse.class);
         //todo do some error handling in the future
 
+        /*
         if (isNull(Objects.requireNonNull(entity.getBody()).getMetadata())) {
             throw new RuntimeException("Received empty JSON response");
-        }
+        }*/
 
         return entity.getBody();
     }

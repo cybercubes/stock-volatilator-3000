@@ -1,7 +1,7 @@
 package ee.taltech.volatilator.service;
 
-import ee.taltech.volatilator.dto.VolatilityResponse;
-import ee.taltech.volatilator.service.alpha.DailyResponse;
+import ee.taltech.volatilator.models.VolatilityResponse;
+import ee.taltech.volatilator.models.DailyResponse;
 import ee.taltech.volatilator.service.alpha.DataPoint;
 import ee.taltech.volatilator.service.alpha.Metadata;
 import ee.taltech.volatilator.util.VolatilityUtil;

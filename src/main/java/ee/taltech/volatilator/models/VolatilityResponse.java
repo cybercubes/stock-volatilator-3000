@@ -1,4 +1,4 @@
-package ee.taltech.volatilator.dto;
+package ee.taltech.volatilator.models;
 
 import ee.taltech.volatilator.service.alpha.DataPoint;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package ee.taltech.volatilator;
 
-import ee.taltech.volatilator.dto.VolatilityResponse;
+import ee.taltech.volatilator.models.VolatilityResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
