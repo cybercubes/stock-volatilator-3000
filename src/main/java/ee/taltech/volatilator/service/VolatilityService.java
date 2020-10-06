@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
-import static ee.taltech.volatilator.util.VolatilityUtil.filterDailyResponse;
+import static ee.taltech.volatilator.util.ResponseUtil.filterDailyResponse;
 
 @Service
 public class VolatilityService {
