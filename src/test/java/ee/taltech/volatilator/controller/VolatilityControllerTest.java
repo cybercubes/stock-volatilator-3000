@@ -1,6 +1,6 @@
 package ee.taltech.volatilator.controller;
 
-import ee.taltech.volatilator.dto.VolatilityData;
+import ee.taltech.volatilator.models.VolatilityResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,14 +19,14 @@ class VolatilatorControllerTest {
 
     @Test
     void volatilator_returns_response_data_from_default(){
-        ResponseEntity<VolatilityData> entity = testRestTemplate.getForEntity("/volatilator", VolatilityData.class);
+        ResponseEntity<VolatilityResponse> entity = testRestTemplate.getForEntity("/volatilator", VolatilityResponse.class);
         assertEquals(HttpStatus.OK, entity.getStatusCode());
     }
 
     @Test
     void volatilator_returns_non_null_response_from_default() {
-        ResponseEntity<VolatilityData> entity = testRestTemplate.getForEntity("/volatilator", VolatilityData.class);
-        VolatilityData volatilityResponse = entity.getBody();
+        ResponseEntity<VolatilityResponse> entity = testRestTemplate.getForEntity("/volatilator", VolatilityResponse.class);
+        VolatilityResponse volatilityResponse = entity.getBody();
         assertNotNull(volatilityResponse);
         assertEquals("IBM", volatilityResponse.getSymbol());
         assertNotNull(volatilityResponse.getEntries());

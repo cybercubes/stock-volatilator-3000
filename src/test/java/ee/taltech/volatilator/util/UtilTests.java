@@ -19,6 +19,15 @@ public class UtilTests {
     }
 
     @Test
+    void deviationTest2(){
+        assertEquals(BigDecimal.valueOf(7.483),
+                VolatilityUtil.getDeviation(Arrays.asList(
+                        BigDecimal.valueOf(13),
+                        BigDecimal.valueOf(25),
+                        BigDecimal.valueOf(7))));
+    }
+
+    @Test
     void deviationTestNullTest(){
         assertEquals(BigDecimal.valueOf(7.483),
                 VolatilityUtil.getDeviation(Arrays.asList(
