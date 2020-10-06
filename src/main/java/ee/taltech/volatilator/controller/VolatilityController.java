@@ -6,6 +6,7 @@ import ee.taltech.volatilator.responses.Response;
 import ee.taltech.volatilator.models.VolatilityResponse;
 import ee.taltech.volatilator.responses.SuccessResponse;
 import ee.taltech.volatilator.service.VolatilityService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import java.util.EmptyStackException;
 
 @RequestMapping("/volatilator")
 @RestController
+@Slf4j
 public class VolatilityController {
     @Autowired
     private VolatilityService volatilityService;
@@ -40,6 +42,8 @@ public class VolatilityController {
             return new ErrorResponse<>("Unexpected error. " + e.getClass() + "; " + e.getMessage());
         }
 
+        log.info("symbol = {}, startDate = {}, endDate = {}",
+                symbol, startDate, endDate);
         return new SuccessResponse<>(volatilityResponse);
     }
 }
