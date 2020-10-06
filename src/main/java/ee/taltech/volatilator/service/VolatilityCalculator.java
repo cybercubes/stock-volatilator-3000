@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.EmptyStackException;
 
 @Service
 public class VolatilityCalculator {
@@ -42,10 +43,10 @@ public class VolatilityCalculator {
         return dataPoint;
     }
 
-    private BigDecimal getVolatility(Map<LocalDate, DataPoint> dataPoint/*, LocalDate start, LocalDate end*/){
+    public BigDecimal getVolatility(Map<LocalDate, DataPoint> dataPoint/*, LocalDate start, LocalDate end*/){
         // Error Checking needs to be leveled up
         if (dataPoint == null || dataPoint.isEmpty()) {
-            return null;
+            throw new EmptyStackException();
         }
         /*else if(start == null || end == null){
             //return BigDecimal.ZERO; Actually calculate full stuff
