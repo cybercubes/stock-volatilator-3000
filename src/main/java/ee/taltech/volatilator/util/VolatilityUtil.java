@@ -1,10 +1,16 @@
 package ee.taltech.volatilator.util;
 
+import ee.taltech.volatilator.service.alpha.DailyResponse;
+import ee.taltech.volatilator.service.alpha.DataPoint;
+import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 
@@ -29,5 +35,21 @@ public class VolatilityUtil {
         return records.stream()
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .divide(BigDecimal.valueOf(records.size()), RoundingMode.HALF_EVEN);
+    }
+
+    //todo: write tests for this
+    public static DailyResponse filterDailyResponse(DailyResponse response, LocalDate startDate, LocalDate endDate) {
+        DailyResponse result = response;
+        Map<LocalDate, DataPoint> newEntries = new HashMap<>();
+
+        for (Map.Entry<LocalDate,DataPoint> entry : response.getData().entrySet()) {
+            if (entry.getKey().isAfter(startDate) && entry.getKey().isBefore(endDate)) {
+                newEntries.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        result.setData(newEntries);
+
+        return result;
     }
 }
