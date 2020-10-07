@@ -2,3 +2,10 @@ app:
   alpha-vantage:
     url: https://www.alphavantage.co/query
     key: IK8R1OK95QFY6YGD
+
+logging:
+  file:
+    name: logs/online-receipt.log
+    max-size: 3MB
+    max-history: 2
+

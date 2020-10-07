@@ -44,6 +44,7 @@ public class VolatilityController {
 
         log.info("symbol = {}, startDate = {}, endDate = {}",
                 symbol, startDate, endDate);
+        log.info("response = {}", volatilityResponse);
         return new SuccessResponse<>(volatilityResponse);
     }
 }
