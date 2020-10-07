@@ -7,14 +7,14 @@ public class ListOfOptions {
     // I will be grading files Tester1-4.java
 
     //todo p1, p2 (I counted 11 options in total)
-    // acceptance testing
+    // acceptance testing (Lysenko kirill)
     // A/B testing
     // load testing
     // performance testing
     // recovery testing
     // regression testing
     // sanity testing
-    // security testing
+    // security testing (Lysenko kirill)
     // smoke testing
     // stress testing
     // usability testing
