@@ -19,7 +19,7 @@ public class TDD {
     //todo p3
     // Who popularized the concept of TDD?
     // Answer:
-    //Kent Beck
+    // Kent Beck
 
     //todo p4
     // Can you name their most famous book?
