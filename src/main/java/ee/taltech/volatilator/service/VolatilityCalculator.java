@@ -35,9 +35,11 @@ public class VolatilityCalculator {
         return metadata != null ? metadata.getSymbol() : "no symbol";
     }
 
+
     private Map<LocalDate, DataPoint> getEntries(Map<LocalDate, DataPoint> dataPoint){
         return dataPoint;
     }
+
 
     public static BigDecimal getVolatility(Map<LocalDate, DataPoint> dataPoint){
         //todo Error Checking needs to be leveled up
