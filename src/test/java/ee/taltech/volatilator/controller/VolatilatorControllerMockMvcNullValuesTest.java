@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class VolatilatorControllerMockMvcTestNulls {
+public class VolatilatorControllerMockMvcNullValuesTest {
 
     @Autowired
     private MockMvc mvc;

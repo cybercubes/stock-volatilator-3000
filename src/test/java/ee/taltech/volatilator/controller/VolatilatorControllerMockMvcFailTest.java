@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class VolatilatorControllerMockMvcTest {
+public class VolatilatorControllerMockMvcFailTest {
 
     @Autowired
     private MockMvc mvc;
