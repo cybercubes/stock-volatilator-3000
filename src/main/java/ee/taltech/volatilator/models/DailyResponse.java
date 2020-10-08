@@ -10,7 +10,6 @@ import java.util.Map;
 
 @Data
 public class DailyResponse {
-
     @JsonProperty("Meta Data")
     private Metadata metadata;
     @JsonProperty("Time Series (Daily)")

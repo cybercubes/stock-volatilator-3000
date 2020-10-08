@@ -1,6 +1,5 @@
 package ee.taltech.volatilator;
 
-import ee.taltech.volatilator.models.VolatilityResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,17 +21,7 @@ public class HttpRequestTest {
     @Test
     public void NonExistingMappingShouldReturnNotFoundMessage() {
         assertThat(this.restTemplate.getForObject( "/nonExistingMapping",
-                String.class)).contains("error-404");
-    }
-
-    @Test
-    public void CorrectMappingReturnsJson() {
-        VolatilityResponse forObject = this.restTemplate.getForObject("/volatilator",
-                VolatilityResponse.class);
-
-
-
-        //assertThat(forObject).contains("error-404");
+                String.class)).contains("{\"status\":\"fail\",\"body\":{\"message\":\"Not found.\"}}");
     }
 
 }
