@@ -8,7 +8,7 @@ public class ListOfOptions {
 
     //todo p1, p2 (I counted 11 options in total)
     // acceptance testing (Lysenko kirill)
-    // A/B testing
+    // A/B testing (Archil Kristinashvili)
     // load testing
     // performance testing
     // recovery testing
@@ -16,6 +16,6 @@ public class ListOfOptions {
     // sanity testing
     // security testing (Lysenko kirill)
     // smoke testing
-    // stress testing
+    // stress testing (Archil Kristinashvili)
     // usability testing
 }
