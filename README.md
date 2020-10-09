@@ -12,6 +12,6 @@ http://localhost:8080/swagger-ui/
 
 ### Usage:
 
-1. Navigate to http://localhost:8080/swagger-ui/volatilator
+1. Navigate to http://localhost:8080/swagger-ui/#/volatility-controller/getDataUsingGET
 1. Select Equity symbol and start and end date
 1. Query
