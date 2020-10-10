@@ -9,17 +9,20 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.LinkedHashMap;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class VolatilityControllerIntegrationTest {
+class VolatilityControllerIntegrationNoDataTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
 
     @Test
     void getDataDefault() {
-        assertEquals(7.904, ((LinkedHashMap) this.restTemplate.getForObject("/volatilator?symbol=FB", LinkedHashMap.class).get("body")).get("volatility"));
+//        assertEquals(7.904, ((LinkedHashMap)this.restTemplate.getForObject(, LinkedHashMap.class).get("body")).get("volatility"));
+        assertThat(((LinkedHashMap) this.restTemplate.getForObject("/volatilator?endDate=1851-10-03&startDate=1851-09-06&symbol=FB", LinkedHashMap.class).get("body")).get("message")).isEqualTo("No data entries found.");
+
     }
 
 }
