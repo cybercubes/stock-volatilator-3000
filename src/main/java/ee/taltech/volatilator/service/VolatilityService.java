@@ -20,7 +20,7 @@ public class VolatilityService {
 
     @Cacheable("responses")
     public VolatilityResponse queryForData(String symbol, String startDate, String endDate)
-            throws DateTimeParseException, IllegalArgumentException {
+            throws DateTimeParseException, IllegalArgumentException, Exception {
 
         DailyResponse dailyData = alphaVantage.queryForDaily(symbol);
 
