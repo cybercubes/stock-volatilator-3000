@@ -13,7 +13,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @SpringBootTest
-public class VolatilatorControllerMockMvcCacheTest {
+public class VolatilityControllerMockMvcCacheTest {
 
     @Mock
     private Response<?> response = mock(Response.class);

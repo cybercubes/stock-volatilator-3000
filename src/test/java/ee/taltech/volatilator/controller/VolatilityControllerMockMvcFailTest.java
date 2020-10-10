@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class VolatilatorControllerMockMvcFailTest {
+public class VolatilityControllerMockMvcFailTest {
 
     @Autowired
     private MockMvc mvc;

@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class VolatilatorControllerMockMvcRegularTest {
+public class VolatilityControllerMockMvcNullValuesTest {
 
     @Autowired
     private MockMvc mvc;
@@ -32,34 +32,37 @@ public class VolatilatorControllerMockMvcRegularTest {
     private AlphaVantage alphaVantage;
 
     @Test
-    void volatilityController_returns_custom_AAPL_response() throws Exception {
+    void volatilityController_returns_custom_NPC_response() throws Exception {
         DailyResponse response = new DailyResponse();
         response.setMetadata(metadata());
         response.setData(data());
         Mockito.when(alphaVantage.queryForDaily(Mockito.anyString())).thenReturn(response);
-        mvc.perform(get("/volatilator?symbol=RegTest").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/volatilator?symbol=NullValues").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("success"))
-                .andExpect(jsonPath("$.body.symbol").value("AAPL"))
-                .andExpect(jsonPath("$.body.volatility").value(BigDecimal.valueOf(7.483)));
+                .andExpect(jsonPath("$.body.symbol").value("NPC"))
+                .andExpect(jsonPath("$.body.volatility").value(BigDecimal.valueOf(3)));
     }
 
     private Map<LocalDate, DataPoint> data() {
         DataPoint v1 = new DataPoint();
         v1.setAdjusted_close(BigDecimal.valueOf(13));
         DataPoint v2 = new DataPoint();
-        v2.setAdjusted_close(BigDecimal.valueOf(25));
+        v2.setAdjusted_close(null);
         DataPoint v3 = new DataPoint();
         v3.setAdjusted_close(BigDecimal.valueOf(7));
+        DataPoint v4 = new DataPoint();
+        v4.setAdjusted_close(null);
 
         return Map.of(LocalDate.of(2020, 9, 11), v1,
                 LocalDate.of(2020, 9, 12), v2,
-                LocalDate.of(2020, 9, 13), v3);
+                LocalDate.of(2020, 9, 13), v3,
+                LocalDate.of(2020, 9, 14), v4);
     }
 
     private Metadata metadata() {
         Metadata metadata = new Metadata();
-        metadata.setSymbol("AAPL");
+        metadata.setSymbol("NPC");
         return metadata;
     }
 
