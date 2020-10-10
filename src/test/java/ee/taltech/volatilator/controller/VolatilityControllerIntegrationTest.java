@@ -12,7 +12,7 @@ import java.util.LinkedHashMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class VolatilityControllerDefIntegrationTest {
+class VolatilityControllerIntegrationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;

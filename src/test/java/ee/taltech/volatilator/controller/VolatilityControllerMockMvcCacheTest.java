@@ -15,14 +15,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @SpringBootTest
 public class VolatilityControllerMockMvcCacheTest {
 
-    @Mock
-    private Response<?> response = mock(Response.class);
+    //@Mock
+
 
 
     @Test
     void volatilityController_method_call_calculation() {
 
-        //verify(response, atMostOnce().get("/volatilator?symbol=BETA").accept(MediaType.APPLICATION_JSON));
+        //verify(response, atMostOnce()).get("/volatilator?symbol=BETA").accept(MediaType.APPLICATION_JSON));
     }
 
 }
