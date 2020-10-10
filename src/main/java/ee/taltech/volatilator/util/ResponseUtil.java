@@ -19,6 +19,11 @@ public class ResponseUtil {
         LocalDate startDate = LocalDate.parse(startDateString);
         LocalDate endDate = LocalDate.parse(endDateString);
 
+        if (response.getData() == null) {
+            System.out.println(response);
+            throw new IllegalArgumentException("API response was null... Most likely the provided symbol does not represent an existing company.");
+        }
+
         if (endDate.isAfter(LocalDate.now())) {
             throw new IllegalArgumentException("Provided endDate cannot be in the future.");
         }

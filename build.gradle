@@ -29,7 +29,7 @@ dependencies {
 
 test {
 	jacoco {
-		excludes = ['src/main/java/a_theory/**']
+		excludes = ['src/main/java/a_theory/question1']
 	}
 	useJUnitPlatform()
 }

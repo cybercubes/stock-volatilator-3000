@@ -55,7 +55,8 @@ public class VolatilatorControllerMockMvcFailTest {
     void volatilityController_unhandled_exception_error() throws Exception {
         mvc.perform(get("/volatilator?symbol=aaaa").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.status").value("error"));
+                .andExpect(jsonPath("$.status").value("fail"))
+                .andExpect(jsonPath("$.body.message").value("API response was null... Most likely the provided symbol does not represent an existing company."));
     }
 
 }
