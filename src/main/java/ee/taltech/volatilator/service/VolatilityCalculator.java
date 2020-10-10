@@ -5,7 +5,6 @@ import ee.taltech.volatilator.models.DailyResponse;
 import ee.taltech.volatilator.service.alpha.DataPoint;
 import ee.taltech.volatilator.service.alpha.Metadata;
 import ee.taltech.volatilator.util.VolatilityUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;

@@ -13,7 +13,7 @@ public class UnitTests {
 
     //todo p3
     // Name 1 disadvantage of unit tests
-    // 1 the test results do not reflect how the system iteslf is going to function, only it only reflects the 
+    // 1 the test results do not reflect how the system itself is going to function, only it only reflects the
     // functionality of it's separate parts
 
     //todo p4
