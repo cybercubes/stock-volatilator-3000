@@ -29,9 +29,6 @@ public class VolatilatorControllerMockMvcFailTest {
     @Autowired
     private MockMvc mvc;
 
-    @MockBean
-    private VolatilityService mockVolService;
-
     @Test
     void volatilityController_returns_default_response() throws Exception {
         mvc.perform(get("/volatilator").accept(MediaType.APPLICATION_JSON))
@@ -71,16 +68,5 @@ public class VolatilatorControllerMockMvcFailTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("fail"))
                 .andExpect(jsonPath("$.body.message").value("API response was null... Most likely the provided symbol does not represent an existing company."));
-    }
-
-    @Test
-    void volatilityController_unhandled_error() throws Exception {
-        when(mockVolService.queryForData(anyString(), anyString(), anyString())).thenThrow(new Exception());
-
-        mvc.perform(get("/volatilator").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.status").value("error"));
-
-        verify(mockVolService, times(1)).queryForData(anyString(), anyString(), anyString());
     }
 }
