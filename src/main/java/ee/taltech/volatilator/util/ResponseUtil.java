@@ -19,11 +19,6 @@ public class ResponseUtil {
         LocalDate startDate = LocalDate.parse(startDateString);
         LocalDate endDate = LocalDate.parse(endDateString);
 
-        if (response.getData() == null) {
-            System.out.println(response);
-            throw new IllegalArgumentException("API response was null... Most likely the provided symbol does not represent an existing company.");
-        }
-
         if (endDate.isAfter(LocalDate.now())) {
             throw new IllegalArgumentException("Provided endDate cannot be in the future.");
         }
@@ -34,6 +29,11 @@ public class ResponseUtil {
 
         if (ChronoUnit.DAYS.between(startDate, endDate) > 99) {
             throw new IllegalArgumentException("The date range should be less than 100 days.");
+        }
+
+        if (response.getData() == null) {
+            System.out.println(response);
+            throw new IllegalArgumentException("API response was null... Most likely the provided symbol does not represent an existing company.");
         }
 
         for (Map.Entry<LocalDate,DataPoint> entry : response.getData().entrySet()) {

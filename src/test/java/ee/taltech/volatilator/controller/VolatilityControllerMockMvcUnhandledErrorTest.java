@@ -30,7 +30,7 @@ public class VolatilityControllerMockMvcUnhandledErrorTest {
     void volatilityController_unhandled_error() throws Exception {
         when(mockVolService.queryForData(anyString(), anyString(), anyString())).thenThrow(new Exception());
 
-        mvc.perform(get("/volatilator").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/volatilator?symbol=mockError").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("error"));
 
