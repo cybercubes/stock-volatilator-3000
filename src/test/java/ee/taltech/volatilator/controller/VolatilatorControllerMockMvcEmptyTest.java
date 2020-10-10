@@ -26,12 +26,12 @@ public class VolatilatorControllerMockMvcEmptyTest {
     private AlphaVantage alphaVantage;
 
     @Test
-    void financeController_returns_custom_NPC_response() throws Exception {
+    void volatilityController_returns_custom_NPC_response() throws Exception {
         DailyResponse response = new DailyResponse();
         Mockito.when(alphaVantage.queryForDaily(Mockito.anyString())).thenReturn(response);
         mvc.perform(get("/volatilator").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.status").value("error"));
+                .andExpect(jsonPath("$.status").value("fail"));
     }
 
 }

@@ -32,7 +32,7 @@ public class VolatilatorControllerMockMvcNullValuesTest {
     private AlphaVantage alphaVantage;
 
     @Test
-    void financeController_returns_custom_NPC_response() throws Exception {
+    void volatilityController_returns_custom_NPC_response() throws Exception {
         DailyResponse response = new DailyResponse();
         response.setMetadata(metadata());
         response.setData(data());
