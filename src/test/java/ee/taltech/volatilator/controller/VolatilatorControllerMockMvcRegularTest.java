@@ -37,7 +37,7 @@ public class VolatilatorControllerMockMvcRegularTest {
         response.setMetadata(metadata());
         response.setData(data());
         Mockito.when(alphaVantage.queryForDaily(Mockito.anyString())).thenReturn(response);
-        mvc.perform(get("/volatilator").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/volatilator?symbol=RegTest").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("success"))
                 .andExpect(jsonPath("$.body.symbol").value("AAPL"))
