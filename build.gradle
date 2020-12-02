@@ -59,3 +59,7 @@ jacocoTestCoverageVerification {
 		}
 	}
 }
+
+bootJar {
+	archiveFileName = 'Volatilator-api.jar'
+}
