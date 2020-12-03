@@ -1,0 +1,45 @@
+stages:
+  - build
+  - test
+  - deploy
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+build api:
+  stage: build
+  cache:
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+  artifacts:
+    paths:
+      - build/libs
+  tags:
+    - api
+  script:
+    - ./gradlew assemble
+
+test api:
+  stage: test
+  tags:
+    - api
+  script:
+    - ./gradlew check
+
+deploy api:
+  stage: deploy
+  only:
+    refs:
+      - main
+  tags:
+    - api
+  script:
+    # mkdir make folder api-deployment ~/ is under current user directory so for gitlab it would be /home/gitlab/api-deployment
+    - mkdir -p ~/api-deployment
+    # rm remove -rf is recursive files from api-deployment
+    - rm -rf ~/api-deployment/*
+    # cp - copy build/libs is where
+    - cp -r build/libs/. ~/api-deployment
+    # this requires sudo rights for gitlab user
+    #- sudo service volatilator restart
