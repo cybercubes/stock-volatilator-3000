@@ -243,4 +243,9 @@ deploy api:
     #- sudo service volatilator restart
 ```
 
+You will also need to be sure the gradlew file has execution permission, this can be done the following way:
+``` shell script
+git update-index --chmod=+x gradlew
+```
+
 After you are done, you need to push the changes
