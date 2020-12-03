@@ -240,7 +240,7 @@ deploy api:
     # cp - copy build/libs is where
     - cp -r build/libs/. ~/api-deployment
     # this requires sudo rights for gitlab user
-    #- sudo service volatilator-api restart
+    - sudo service volatilator-api restart
 ```
 
 You will also need to be sure the gradlew file has execution permission, this can be done the following way:
