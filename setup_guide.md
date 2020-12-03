@@ -240,12 +240,87 @@ deploy api:
     # cp - copy build/libs is where
     - cp -r build/libs/. ~/api-deployment
     # this requires sudo rights for gitlab user
-    #- sudo service volatilator restart
+    #- sudo service volatilator-api restart
 ```
 
 You will also need to be sure the gradlew file has execution permission, this can be done the following way:
-``` shell script
+```shell script
 git update-index --chmod=+x gradlew
 ```
 
 After you are done, you need to push the changes
+
+### Create Linux service
+
+We need to create a service which will restart our api after it's deploy.
+
+```shell script
+cd /etc/systemd/system
+
+sudo touch volatilator-api.service
+```
+
+volatilator-api.service contents:
+
+```shell script
+[Unit]
+Description=volatilator api service
+After=network.target
+
+[Service]
+Type=simple
+User=gitlab-runner
+WorkingDirectory=/home/gitlab-runner/api-deployment
+ExecStart=/usr/bin/java -jar -Dspring.config.location=/home/gitlab-runner/custom.yaml Volatilator-api.jar                                                                        Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
+```
+
+##### !NB
+
+Since we don't want to commit any sensitive information to our git repository (like contents of certain config files)
+we should specify external custom config file when we run our api's .jar file. The config should be created in the
+gitlab-runner user's home directory.
+
+```shell script
+cd /home/gitlab-runner
+
+nano custom.yaml
+```
+
+The contents of custom.yaml should be kept secret (not to leak the api keys, for example)
+
+After the service file had been defined we need to reload the configuration:
+
+```shell script
+sudo systemctl daemon-reload
+```
+
+Process must be enabled:
+
+```shell script
+sudo systemctl enable volatilator-api
+```
+
+Start the service:
+```shell script
+sudo  service volatilator-api restart
+```
+
+To check service status:
+```shell script
+sudo  service volatilator-api status
+```
+
+The last thing we need to do is to provide gitlab-runner user with sudo permissions for the volatilator-api service:
+
+```shell script
+sudo visudo
+```
+
+At the end of the file add the following:
+```
+gitlab-runner ALL = NOPASSWD: /usr/sbin/service volatilator-api *
+```
