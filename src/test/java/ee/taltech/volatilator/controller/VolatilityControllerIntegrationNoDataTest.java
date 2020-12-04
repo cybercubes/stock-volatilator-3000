@@ -10,7 +10,7 @@ import java.util.LinkedHashMap;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-/*@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class VolatilityControllerIntegrationNoDataTest {
 
     @Autowired
@@ -18,8 +18,9 @@ class VolatilityControllerIntegrationNoDataTest {
 
     @Test
     void getDataDefault() {
-        assertThat(((LinkedHashMap) this.restTemplate.getForObject("/volatilator?endDate=1851-10-03&startDate=1851-09-06&symbol=FB", LinkedHashMap.class).get("body")).get("message")).isEqualTo("No data entries found.");
-
+        String url = "/volatilator?endDate=1851-10-03&startDate=1851-09-06&symbol=FB";
+        assertThat(((LinkedHashMap) this.restTemplate.getForObject(url, LinkedHashMap.class).get("body")).get("message")).isEqualTo("No data entries found.");
+        assertThat((this.restTemplate.getForObject(url, LinkedHashMap.class).get("status"))).isEqualTo("fail");
     }
 
-}*/
+}
