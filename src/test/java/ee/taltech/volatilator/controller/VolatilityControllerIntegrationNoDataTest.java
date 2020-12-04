@@ -10,7 +10,7 @@ import java.util.LinkedHashMap;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+/*@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class VolatilityControllerIntegrationNoDataTest {
 
     @Autowired
@@ -22,4 +22,4 @@ class VolatilityControllerIntegrationNoDataTest {
 
     }
 
-}
+}*/
