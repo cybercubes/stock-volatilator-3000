@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import springfox.documentation.spring.web.json.Json;
 
 import java.util.LinkedHashMap;
 
@@ -18,7 +19,11 @@ class VolatilityControllerIntegrationNoDataTest {
 
     @Test
     void getDataDefault() {
-        assertThat(((LinkedHashMap) this.restTemplate.getForObject("/volatilator?endDate=1851-10-03&startDate=1851-09-06&symbol=FB", LinkedHashMap.class).get("body")).get("message")).isEqualTo("No data entries found.");
+        assertThat(((LinkedHashMap) this.restTemplate
+                .getForObject("/volatilator?endDate=1851-10-03&startDate=1851-09-06&symbol=FB", LinkedHashMap.class)
+                .get("body"))
+                .get("message"))
+                .isEqualTo("No data entries found.");
 
     }
 
