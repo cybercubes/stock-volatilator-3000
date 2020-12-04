@@ -25,7 +25,7 @@ test api:
   tags:
     - api
   script:
-    - ./gradlew check
+    - ./gradlew check --stacktrace
 
 deploy api:
   stage: deploy
