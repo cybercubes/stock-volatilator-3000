@@ -18,6 +18,8 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok:1.18.12'
 	annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
 	compile 'io.springfox:springfox-boot-starter:3.0.0'
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
