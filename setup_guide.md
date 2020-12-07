@@ -103,13 +103,13 @@ sudo apt-get install openjdk-11-jre openjdk-11-jdk
 
 ### Manually run .jar files
 
-If you want to manually run your .jar file
+If you want to manually run your .jar file (from .jar's directory):
 
 ```shell script
 java -jar Volatilator-api.jar
 ```
 
-Replace Volatilator-api.jar with whatever is your .jar file is
+Replace Volatilator-api.jar with whatever is your .jar file.
 
 ### Installing gitlab-runner
 Get the required binary, in our case we need *amd64 binary:
@@ -188,11 +188,11 @@ Provide information from the "Set up a specific Runner manually"
 
 Also specify the tag for the runner, in our case the tag is "api"
 
-when it asks you to Enter an executor, specify "shell"
+When it asks you to Enter an executor, specify "shell"
 
 ### Configure CI in gitlab
 
-Add .gitlab-ci.yml file to the root folder of your repository
+Add .gitlab-ci.yml file to the root folder of your API repository
 
 Example of how the file contents should look like:
 ```yaml
@@ -248,7 +248,7 @@ You will also need to be sure the gradlew file has execution permission, this ca
 git update-index --chmod=+x gradlew
 ```
 
-After you are done, you need to push the changes
+After you are done, you need to push the changes.
 
 ### Create Linux service
 
@@ -292,7 +292,7 @@ nano custom.yaml
 
 The contents of custom.yaml should be kept secret (not to leak the api keys, for example)
 
-We also need to alter the service file, change the line:
+We also need to alter the api service file, change the line:
 ```shell script
 ExecStart=/usr/bin/java -jar Volatilator-api.jar 
 ```
@@ -340,7 +340,7 @@ Now our built api can be automatically deployed by the runner!
 
 ### Map our api to /api
 
-add this to the top of application.yaml
+Add this to the top of our backend config:
 ```yaml
 server:
   servlet:
