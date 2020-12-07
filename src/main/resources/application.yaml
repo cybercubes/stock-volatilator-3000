@@ -5,7 +5,7 @@ server:
 app:
   alpha-vantage:
     url: https://www.alphavantage.co/query
-    key: IK8R1OK95QFY6YGD
+    key: Demo
 
 logging:
   file:

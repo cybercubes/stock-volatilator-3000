@@ -397,3 +397,61 @@ server {
     }  
 }
 ```
+
+### Setup DNS through AWS's Route 53 and Freenom
+
+Get a free domain from Freenom (https://my.freenom.com/), then go to AWS
+
+1. Go to AWS' Route 53 service
+2. Go to "Hosted zones"
+3. Click "Create hosted zones" button
+4. Specify the domain name and click "Create hosted zones"
+
+#### Add record
+
+1. Simple routing
+2. Define simple record
+3. End point: IP address 
+4. Record type "A"
+5. Define simple record
+6. Create Records
+
+#### Provide NS(name servers) to Your owned domain
+
+Go to Route 53's "Hosted zones" and see the NS record server names, keep note of them. Then go to Freenom.
+
+1. Go to "My domains"
+
+2. Click "Manage Domain" for the one you've chosen
+
+3. Go to Management Tools > Nameservers
+
+4. Select "Use custom nameservers"
+
+5. Enter the nameservers from Route 53
+
+##### !NB
+The name server will not work straight away, so you will have to wait for a bit.
+
+After you are done, now we are able to access our api though our chosen Domain!
+
+http://volatilator2020.ga/api/
+
+http://volatilator2020.ga/api/volatilator
+
+http://volatilator2020.ga/api/volatilator?symbol=AMD
+
+### HTTPS
+
+Install certbot
+``` shell script
+sudo add-apt-repository ppa:certbot/certbot
+
+sudo apt install python3-certbot-nginx
+```
+
+
+Go through the setup process (On the last prompt say '2')
+```shell script
+sudo certbot --nginx
+```
