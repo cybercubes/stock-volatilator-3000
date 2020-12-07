@@ -1,3 +1,7 @@
+server:
+  servlet:
+    context-path: /api
+
 app:
   alpha-vantage:
     url: https://www.alphavantage.co/query

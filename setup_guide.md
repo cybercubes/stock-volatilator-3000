@@ -271,7 +271,7 @@ After=network.target
 Type=simple
 User=gitlab-runner
 WorkingDirectory=/home/gitlab-runner/api-deployment
-ExecStart=/usr/bin/java -jar -Dspring.config.location=/home/gitlab-runner/custom.yaml Volatilator-api.jar                                                                        Restart=on-abort
+ExecStart=/usr/bin/java -jar Volatilator-api.jar                                                                         Restart=on-abort
 
 [Install]
 WantedBy=multi-user.target
@@ -291,6 +291,16 @@ nano custom.yaml
 ```
 
 The contents of custom.yaml should be kept secret (not to leak the api keys, for example)
+
+We also need to alter the service file, change the line:
+```shell script
+ExecStart=/usr/bin/java -jar Volatilator-api.jar 
+```
+To:
+```shell script
+ExecStart=/usr/bin/java -jar -Dspring.config.location=/home/gitlab-runner/custom.yaml Volatilator-api.jar   
+```
+We basically tell our service to run our backend with specified config.
 
 After the service file had been defined we need to reload the configuration:
 
@@ -314,7 +324,8 @@ To check service status:
 sudo  service volatilator-api status
 ```
 
-The last thing we need to do is to provide gitlab-runner user with sudo permissions for the volatilator-api service:
+The last thing we need to do is to provide gitlab-runner user with sudo permissions for the volatilator-api
+service, open visudo:
 
 ```shell script
 sudo visudo
@@ -323,4 +334,66 @@ sudo visudo
 At the end of the file add the following:
 ```
 gitlab-runner ALL = NOPASSWD: /usr/sbin/service volatilator-api *
+```
+
+Now our built api can be automatically deployed by the runner!
+
+### Map our api to /api
+
+add this to the top of application.yaml
+```yaml
+server:
+  servlet:
+    context-path: /api
+```
+
+### Our Api is available at:
+
+13.53.186.119/api
+
+13.53.186.119/api/volatilator
+
+13.53.186.119/api/volatilator?symbol=AMD
+
+### Install Nginx
+
+```shell script
+sudo apt-get install nginx
+```
+
+### Configure Nginx' reverse proxy
+To get rid of the port we will need to add the following to our nginx config at /etc/nginx/sites-enabled/default:
+```bash
+location /api/ {
+    proxy_pass http://localhost:8080;
+}
+```
+
+After that we need to restart nginx:
+
+```bash
+sudo service nginx restart
+```
+
+### Final nginx config
+```shell script
+server {
+
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+
+	index index.html index.htm index.nginx-debian.html;
+
+	server_name _;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+    location /api/ {  
+            proxy_pass   http://localhost:8080;  
+    }  
+}
 ```
