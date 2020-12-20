@@ -455,3 +455,156 @@ Go through the setup process (On the last prompt say '2')
 ```shell script
 sudo certbot --nginx
 ```
+
+### Docker
+
+```shell script
+apt install docker
+apt install docker-compose
+```
+
+add gitlab-runner to docker group
+```shell script
+usermod -a -G docker gitlab-runner
+```
+
+```shell script
+mkdir /home/ubuntu/volatilator
+mkdir /home/ubuntu/volatilator/public
+```
+
+Make config for docker image
+```shell script
+nano /home/ubuntu/volatilator/docker-compose.yml
+```
+Content is as follows:
+```yaml
+version: "3.3"
+services:
+    web: 
+        image: nginx:latest
+        restart: always
+        volumes:
+            - ./public:/var/www/html
+            - ./conf.d:/etc/nginx/conf.d
+            - /etc/letsencrypt:/etc/letsencrypt
+            - ./certbot/data:/var/www/certbot
+        ports:
+            - 80:80
+            - 443:443
+    java:
+        image: openjdk:latest
+        restart: always
+        volumes:
+           - /home/gitlab-runner/api-deployment:/api
+           - ./api-config:/api-config 
+        command: bash -c "cd /api && java -jar -Dspring.config.location=/api-config/custom.yaml Volatilator-api.jar"
+```
+
+configure nginx
+```shell script
+mkdir /home/ubuntu/volatilator/conf.d
+nano /home/ubuntu/volatilator/conf.d/default
+```
+Content is as follows:
+```yaml
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+
+        location /api/ {
+                proxy_pass http://java:8080;
+                proxy_set_header Host $http_host;
+        }
+}
+
+server {
+
+        root /var/www/html;
+
+        index index.html index.htm index.nginx-debian.html;
+    server_name volatilator2020.ga; # managed by Certbot
+
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+
+        location /api/ {
+                proxy_pass http://java:8080;
+                proxy_set_header Host $http_host;
+        }
+
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/volatilator2020.ga/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/volatilator2020.ga/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}server {
+    if ($host = volatilator2020.ga) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+        listen 80 ;
+        listen [::]:80 ;
+    server_name volatilator2020.ga;
+    return 404; # managed by Certbot
+
+
+}
+```
+
+```shell script
+mkdir /home/ubuntu/volatilator/api-config
+nano /home/ubuntu/volatilator/api-config/custom.yaml
+```
+content is as follows:
+```yaml
+server:
+  servlet:
+    context-path: /api
+
+app:
+  alpha-vantage:
+    url: https://www.alphavantage.co/query
+    key: IK8R1OK95QFY6YGD
+
+logging:
+  file:
+    name: logs/volatilator.log
+    max-size: 3MB
+    max-history: 2
+```
+
+```shell script
+cd /home/ubuntu/volatilator
+docker-compose up -d
+```
+
+```shell script
+docker-compose ps
+```
+
+To restart the docker container
+```shell script
+docker restart volatilator_java_1
+```
+
+add this to sudoers
+```shell script
+gitlab-runner ALL = NOPASSWD: /usr/sbin/docker restart volatilator_java_1
+```
