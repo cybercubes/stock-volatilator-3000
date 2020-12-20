@@ -8,7 +8,7 @@ public class IndexController {
 
     @GetMapping
     public String index(){
-        return "API is up";
+        return "API is up, baby!";
     }
 
 }
