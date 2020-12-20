@@ -42,4 +42,5 @@ deploy api:
     # cp - copy build/libs is where
     - cp -r build/libs/. ~/api-deployment
     # this requires sudo rights for gitlab user
-    - sudo service volatilator-api restart
+    # Old service: - sudo service volatilator-api restart
+    - sudo docker restart volatilator_java_1
