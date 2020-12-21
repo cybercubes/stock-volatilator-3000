@@ -581,11 +581,11 @@ server:
 app:
   alpha-vantage:
     url: https://www.alphavantage.co/query
-    key: IK8R1OK95QFY6YGD
+    key: [Our-Api-Key]
 
 logging:
   file:
-    name: logs/volatilator.log
+    name: ../logs/volatilator.log
     max-size: 3MB
     max-history: 2
 ```
