@@ -9,7 +9,7 @@ app:
 
 logging:
   file:
-    name: /var/volatilator-logs/volatilator.log
+    name: logs/volatilator.log
     max-size: 3MB
     max-history: 2
 
