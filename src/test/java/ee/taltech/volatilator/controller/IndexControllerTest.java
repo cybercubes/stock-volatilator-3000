@@ -15,7 +15,7 @@ public class IndexControllerTest {
 
     @Test
     public void greetingShouldReturnDefaultMessage() {
-        assertThat(this.restTemplate.getForObject("/", String.class)).isEqualTo("API is up, baby!");
+        assertThat(this.restTemplate.getForObject("/", String.class)).isEqualTo("API is up, baby! Test!");
     }
 
 }

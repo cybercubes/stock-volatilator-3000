@@ -271,7 +271,8 @@ After=network.target
 Type=simple
 User=gitlab-runner
 WorkingDirectory=/home/gitlab-runner/api-deployment
-ExecStart=/usr/bin/java -jar Volatilator-api.jar                                                                         Restart=on-abort
+ExecStart=/usr/bin/java -jar Volatilator-api.jar
+Restart=on-abort
 
 [Install]
 WantedBy=multi-user.target
