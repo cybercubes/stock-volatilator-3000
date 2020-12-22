@@ -21,7 +21,7 @@ public class CD {
     //todo D
     // Name and explain 1 benefit of CD
     // 1 Faster deployment, traditional releases take more time, more effort and cost way more
-    // compared to that CD makes deployment is effortless
+    // compared to that CD makes deployment effortless
 
     //todo E
     // Name and explain 1 drawback of CD
