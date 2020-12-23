@@ -13,3 +13,10 @@ logging:
     max-size: 3MB
     max-history: 2
 
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: "* ,prometheus"
