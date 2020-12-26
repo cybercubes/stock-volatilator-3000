@@ -26,6 +26,9 @@ public class VolatilityUtil {
 
     public static BigDecimal getAverage(List<BigDecimal> records){
         records = filterNulls(records);
+        if (records.size() == 0) {
+            throw new ArithmeticException("Can't divide by zero");
+        }
         return records.stream()
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .divide(BigDecimal.valueOf(records.size()), RoundingMode.HALF_EVEN);
