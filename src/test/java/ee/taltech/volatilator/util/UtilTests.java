@@ -37,7 +37,15 @@ public class UtilTests {
                         null)));
     }
 
-
+    @Test
+    void deviationTestNullsTest(){
+        assertThrows(ArithmeticException.class, () -> VolatilityUtil.getDeviation(
+                Arrays.asList(
+                        null,
+                        null,
+                        null,
+                        null)));
+    }
 
     @Test
     void averageTest(){
@@ -48,6 +56,15 @@ public class UtilTests {
     }
 
     @Test
+    void averageTestRounding(){
+        assertEquals(BigDecimal.valueOf(10), VolatilityUtil.getAverage(Arrays.asList(
+                BigDecimal.valueOf(3),
+                BigDecimal.valueOf(8),
+                BigDecimal.valueOf(7),
+                BigDecimal.valueOf(20))));
+    }
+
+    @Test
     void averageNullTest(){
         assertEquals(BigDecimal.valueOf(11), VolatilityUtil.getAverage(
                 Arrays.asList(
@@ -55,5 +72,15 @@ public class UtilTests {
                 BigDecimal.valueOf(9),
                 BigDecimal.valueOf(21),
                 null)));
+    }
+
+    @Test
+    void averageNullsTest(){
+        assertThrows(ArithmeticException.class, () -> VolatilityUtil.getAverage(
+                Arrays.asList(
+                        null,
+                        null,
+                        null,
+                        null)));
     }
 }
