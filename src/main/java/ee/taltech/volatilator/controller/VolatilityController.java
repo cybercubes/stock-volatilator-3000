@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.format.DateTimeParseException;
 import java.util.EmptyStackException;
 
-@RequestMapping("/volatilator")
+@RequestMapping({"/volatilator", "/volatilator2"})
 @RestController
 @Slf4j
 @Component
