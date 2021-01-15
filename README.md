@@ -3,7 +3,7 @@
 * Giorgi Zeikidze
 * Kirill Lõssenko
 
-## Heroes backend
+## Volatilator backend
 
 ### Swagger
 
